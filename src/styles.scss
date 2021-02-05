@@ -1,7 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../src/app/shared/styles/main';
 
+
 html,
-body {
+body,
+.container {
   height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 200;
+  background: url('./assets/background.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: #454545;
+}
+
+footer {
+  width: 100%;
+  height: 40px;
+  background: white;
 }
