@@ -25,12 +25,10 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/app/shared/styles"
+              "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/app/shared/styles/main.scss"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -93,8 +91,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/app/shared/styles/main.scss"
+              "src/styles.scss"
             ],
             "scripts": []
           }
