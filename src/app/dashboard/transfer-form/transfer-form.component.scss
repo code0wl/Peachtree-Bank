@@ -5,20 +5,29 @@
   height: auto;
   padding: 0;
   border-radius: 8px;
+  margin-top: 3rem;
 
-  ::ng-deep .mat-card-header .mat-card-title, .mat-card-actions {
-    margin: 0;
+  ::ng-deep {
+    .mat-card-header .mat-card-title, .mat-card-actions {
+      margin: 0;
+    }
+
+    .mat-card-actions {
+      padding: 0;
+    }
   }
+
 
   .transfer-form--header {
     background: $primary-blue;
     padding: 0.5rem;
     color: white;
+    border-radius: 8px 8px 0 0;
   }
 
   .transfer-form--content {
     background: white;
-    padding: 1rem;
+    padding: 1rem 1rem 0;
     margin: 0;
 
     .input-icon {
@@ -41,6 +50,7 @@
       & > input {
         padding-left: 36px;
         padding-right: 0;
+        margin: 0;
       }
     }
   }

@@ -56,10 +56,13 @@ input {
 }
 
 .btn {
-  padding: 0.5rem;
-  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  border: none;
+  color: white;
+  border-radius: 4px;
 
-  .btn-primary {
-
+  &.btn-primary {
+    background: #f36500;
   }
 }
