@@ -4,5 +4,5 @@ export const USER_OBJECT: UserAccount = {
   name: 'My Account',
   accountNumber: '2343243253532',
   balance: 10000,
-  currencyCode: 'EUR'
+  currencyCode: '&#8364;'
 };

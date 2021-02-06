@@ -12,6 +12,7 @@ import {TransactionReviewComponent} from './transaction-review/transaction-revie
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
@@ -32,9 +33,11 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule,
+    MatCardModule
   ],
   exports: [
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ],
   entryComponents: [TransactionReviewComponent]
 })

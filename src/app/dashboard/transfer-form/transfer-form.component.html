@@ -1,32 +1,33 @@
-<div class="transfer-form" fxFlex="100%" fxLayout="column">
-  <div class="transfer-form--header" fxLayout="row" fxLayoutAlign="space-around center">
-    <mat-icon>account_balance_wallet</mat-icon>
-    <span> <strong>Make</strong> Transfer</span>
-  </div>
-  <div class="transfer-form--content">
+<mat-card class="transfer-form-card">
+  <mat-card-header class="transfer-form--header" fxLayoutAlign="start center">
+    <mat-icon mat-card-avatar>account_balance_wallet</mat-icon>
+    <mat-card-title>Make Transfer</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="transfer-form--content">
     <form (ngSubmit)="onSubmit()" [formGroup]=transferForm fxLayout="column" fxLayoutGap="1rem">
-      <div fxLayout="column">
+      <div fxLayout="column" fxLayoutGap="0.5rem">
         <label for="from-account">From Account</label>
-        <input class="form-input" formControlName="fromAccount" id="from-account" type="text">
+        <input formControlName="fromAccount" id="from-account" type="text">
       </div>
-      <div fxLayout="column">
+      <div fxLayout="column" fxLayoutGap="0.5rem">
         <div fxFlex="100"><label for="to-account">To Account</label></div>
-        <input autocomplete="off" formControlName="toAccount" id="to-account" placeholder="Merchant name" type="text">
+        <input autocomplete="off" formControlName="toAccount" id="to-account" placeholder="type an account name"
+               type="text">
       </div>
-      <div class="form-group mb-0">
-        <label for="amount">Amount</label>
-        <div>
-          <span>{{userAccount.currencyCode}}</span>
-          <input autocomplete="off" class="form-input" formControlName="amount" id="amount" min="0" placeholder="0.00"
+      <div fxLayout="column" fxLayoutGap="0.5rem">
+        <div fxFlex="100"><label for="amount">Amount</label></div>
+        <div class="input-icon" fxLayoutGap="0.5rem">
+          <input autocomplete="off" formControlName="amount" id="amount" min="0" placeholder="0.00"
                  type="number">
+          <i [innerHTML]="userAccount.currencyCode" fxLayoutAlign="center center"></i>
         </div>
       </div>
       <div *ngIf="amount.errors && amount.errors.overdraft">Can not overdraft beyond 500</div>
-      <div>
-        <app-submit-button>Submit</app-submit-button>
-      </div>
     </form>
-  </div>
-</div>
+  </mat-card-content>
+  <mat-card-actions>
+    <app-submit-button (submitForm)="onSubmit()" fxLayoutAlign="end end">Submit</app-submit-button>
+  </mat-card-actions>
+</mat-card>
 
 

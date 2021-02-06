@@ -48,7 +48,7 @@ export class DashboardComponent implements OnInit {
         this.transactionsService.addTransaction(data);
         this.userDataService.deductBalance(data.amount);
       } else {
-        this.matSnackBar.open('Transfer Cancelled, Please resubmit to transfer');
+        this.matSnackBar.open('Transfer Cancelled, Please resubmit to transfer', '', {duration: 3000});
       }
     });
   }
