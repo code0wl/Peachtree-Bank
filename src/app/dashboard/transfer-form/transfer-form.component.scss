@@ -1,0 +1,15 @@
+@import '../../../../src/app/shared/styles/main';
+
+.transfer-form {
+  width: 300px;
+  height: auto;
+
+  .transfer-form--header {
+    background: $primary-blue;
+  }
+
+  .transfer-form--content {
+    background: white;
+    padding: 1rem;
+  }
+}
