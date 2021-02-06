@@ -5,6 +5,8 @@ import {AppRoutingModule} from "./app-routing.module";
 import {BrowserModule} from "@angular/platform-browser";
 import {HeaderComponent} from "./shared/components/header/header.component";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {DashboardModule} from "./dashboard/dashboard.module";
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -12,9 +14,12 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     BrowserModule,
     FlexLayoutModule,
     AppRoutingModule,
-    BbUIModule],
+    BbUIModule,
+    DashboardModule,
+    NoopAnimationsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 }
+
