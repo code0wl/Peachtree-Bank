@@ -8,14 +8,26 @@ import {TransactionsListComponent} from './transactions-list/transactions-list.c
 import {DashboardComponent} from "./dashboard.component";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatIconModule} from "@angular/material/icon";
+import {TransactionReviewComponent} from './transaction-review/transaction-review.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatButtonModule} from "@angular/material/button";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
-  declarations: [DashboardComponent, TransferFormComponent, TransactionsListComponent],
+  declarations: [
+    DashboardComponent,
+    TransferFormComponent,
+    TransactionsListComponent,
+    TransactionReviewComponent,
+    TransactionReviewComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     BbUIModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatButtonModule,
     MatIconModule,
     FlexLayoutModule,
     ReactiveFormsModule,
@@ -23,7 +35,8 @@ import {MatIconModule} from "@angular/material/icon";
   ],
   exports: [
     MatIconModule
-  ]
+  ],
+  entryComponents: [TransactionReviewComponent]
 })
 export class DashboardModule {
 }

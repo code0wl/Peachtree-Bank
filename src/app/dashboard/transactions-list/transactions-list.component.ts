@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TransactionData} from "../../shared/models/transactions";
+import {TransactionData} from "../../shared/models/transaction-data.model";
 
 @Component({
   selector: 'app-transactions-list',

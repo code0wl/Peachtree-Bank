@@ -1,4 +1,5 @@
 <div fxFlex="100" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="2rem">
-  <app-transfer-form [userAccount]="userAccountDetails$ | async"></app-transfer-form>
+  <app-transfer-form (performTransaction)="reviewTransaction($event)"
+                     [userAccount]="userAccountDetails$ | async"></app-transfer-form>
   <app-transactions-list [transactionsList]="userTransactionsList$ | async"></app-transactions-list>
 </div>

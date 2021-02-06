@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {TransactionData} from '../shared/models/transactions';
+import {TransactionData} from '../shared/models/transaction-data.model';
 import {HttpClient} from '@angular/common/http';
 import {catchError, map} from 'rxjs/operators';
+import {TransactionFromData} from "../shared/models/transaction-form-data.model";
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,9 @@ export class UserTransactionsService {
           return (res ? res : []) as TransactionData[];
         }),
         catchError(() => of([] as TransactionData[])));
+  }
+
+  addTransaction(data: TransactionFromData): Observable<any> {
+    return of({});
   }
 }

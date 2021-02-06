@@ -1,8 +1,8 @@
-import {UserAccount} from '../../shared/models/userAccount';
+import {UserAccount} from '../../shared/models/user-account.model';
 
 export const USER_OBJECT: UserAccount = {
-  name: 'Mahammad Sirajuddin Rayyan',
+  name: 'My Account',
   accountNumber: '2343243253532',
-  balance: 121332424,
+  balance: 10000,
   currencyCode: 'EUR'
 };

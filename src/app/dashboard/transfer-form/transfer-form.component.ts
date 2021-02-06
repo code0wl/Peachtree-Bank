@@ -1,6 +1,7 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserAccount} from '../../shared/models/userAccount';
+import {UserAccount} from '../../shared/models/user-account.model';
+import {TransactionFromData} from "../../shared/models/transaction-form-data.model";
 
 interface InputError {
   [key: string]: boolean;
@@ -11,15 +12,19 @@ interface InputError {
   templateUrl: './transfer-form.component.html',
   styleUrls: ['./transfer-form.component.scss']
 })
-export class TransferFormComponent implements OnInit, OnChanges {
+export class TransferFormComponent implements OnChanges {
   transferForm: FormGroup;
   @Input() userAccount: UserAccount;
+  @Output() performTransaction = new EventEmitter<TransactionFromData>();
 
   constructor(private fb: FormBuilder) {
   }
 
-  ngOnInit(): void {
-    this.initializeForm();
+  /**
+   * @returns amount form control from the transferForm form group
+   */
+  get amount(): AbstractControl {
+    return this.transferForm.get('amount');
   }
 
   /**
@@ -30,6 +35,15 @@ export class TransferFormComponent implements OnInit, OnChanges {
     if (changes.userAccount && changes.userAccount.currentValue) {
       this.initializeForm();
     }
+  }
+
+  /**
+   * @summary Forms transactionData object with from account, to account and amount
+   *          details and emits an event to it's parent component with transactionData
+   */
+  onSubmit(): void {
+    const transactionData = {...this.transferForm.value, ...{fromAccount: this.userAccount}};
+    this.performTransaction.emit(transactionData);
   }
 
   /**
@@ -64,12 +78,12 @@ export class TransferFormComponent implements OnInit, OnChanges {
    * @summary Validates the amount field for overdraft and zero amount
    * @returns an error object if the overdraft is more than 500 and/or amount entered is zero
    */
-  private validateAmount(): ((contol: AbstractControl) => InputError) {
-    return (contol: AbstractControl): InputError => {
+  private validateAmount(): ((control: AbstractControl) => InputError) {
+    return (control: AbstractControl): InputError => {
       const balance = this.userAccount.balance;
-      if ((balance - contol.value) < -500) {
+      if ((balance - control.value) < -500) {
         return {overdraft: true};
-      } else if (!/^\d+(?:\.\d{0,2})?$/g.test(contol.value) || contol.value === 0) {
+      } else if (!/^\d+(?:\.\d{0,2})?$/g.test(control.value) || control.value === 0) {
         return {invalidAmount: true};
       }
       return null;

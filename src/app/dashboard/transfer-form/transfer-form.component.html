@@ -4,7 +4,7 @@
     <span> <strong>Make</strong> Transfer</span>
   </div>
   <div class="transfer-form--content">
-    <form [formGroup]=transferForm fxLayout="column" fxLayoutGap="1rem">
+    <form (ngSubmit)="onSubmit()" [formGroup]=transferForm fxLayout="column" fxLayoutGap="1rem">
       <div fxLayout="column">
         <label for="from-account">From Account</label>
         <input class="form-input" formControlName="fromAccount" id="from-account" type="text">
@@ -13,14 +13,15 @@
         <div fxFlex="100"><label for="to-account">To Account</label></div>
         <input autocomplete="off" formControlName="toAccount" id="to-account" placeholder="Merchant name" type="text">
       </div>
-      <div fxLayout="column" fxLayoutGap="0.5rem">
+      <div class="form-group mb-0">
         <label for="amount">Amount</label>
-        <div fxLayout="row" fxLayoutGap="0.5rem">
-          <span>$</span>
-          <input autocomplete="off" formControlName="amount" id="amount" min="0" placeholder="0.00" type="number">
+        <div>
+          <span>{{userAccount.currencyCode}}</span>
+          <input autocomplete="off" class="form-input" formControlName="amount" id="amount" min="0" placeholder="0.00"
+                 type="number">
         </div>
       </div>
-      <div>Can not overdraft beyond 500</div>
+      <div *ngIf="amount.errors && amount.errors.overdraft">Can not overdraft beyond 500</div>
       <div>
         <app-submit-button>Submit</app-submit-button>
       </div>

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
 import {USER_OBJECT} from "./mock-json/mock-user-data";
-import {UserAccount} from "../shared/models/userAccount";
+import {UserAccount} from "../shared/models/user-account.model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +17,9 @@ export class UserProfileService {
    */
   getUserAccountDetails(): Observable<UserAccount> {
     return of(USER_OBJECT);
+  }
+
+  deductBalance(amount): Observable<any> {
+    return of({});
   }
 }

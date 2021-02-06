@@ -1,4 +1,4 @@
-import {UserAccount} from './userAccount';
+import {UserAccount} from './user-account.model';
 
 export interface TransactionData {
   categoryCode: UserAccount;
