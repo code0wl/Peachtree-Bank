@@ -1,7 +1,7 @@
-import {Account} from './account';
+import {UserAccount} from './userAccount';
 
 export interface TransactionData {
-  categoryCode: Account;
+  categoryCode: UserAccount;
   dates: ValueDate;
   transaction: Transaction;
   merchant: Merchant;

@@ -7,6 +7,7 @@ import {HeaderComponent} from "./shared/components/header/header.component";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {DashboardModule} from "./dashboard/dashboard.module";
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {CoreModule} from "./core/core.module";
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -16,6 +17,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
     AppRoutingModule,
     BbUIModule,
     DashboardModule,
+    CoreModule,
     NoopAnimationsModule],
   providers: [],
   bootstrap: [AppComponent]

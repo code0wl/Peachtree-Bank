@@ -1,4 +1,4 @@
-export interface Account {
+export interface UserAccount {
   name: string;
   accountNumber: string;
   balance: number;
