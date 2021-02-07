@@ -14,7 +14,7 @@ export class TransactionsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.transactionsList);
+    this.transactionsList.sort((a, b) => new Date(b.dates.valueDate).getTime() - new Date(a.dates.valueDate).getTime());
   }
 
 }

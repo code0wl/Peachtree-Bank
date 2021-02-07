@@ -5,7 +5,8 @@
   </mat-card-header>
   <mat-card-content class="transfer-form--content">
     <div class="transactions-list" fxLayout="column" fxLayoutGap="1rem">
-      <app-transaction-item *ngFor="let transaction of transactionsList" fxLayout="row" fxLayoutAlign="start center"
+      <app-transaction-item *ngFor="let transaction of transactionsList | sortByDate : 'desc'" fxLayout="row"
+                            fxLayoutAlign="start center"
                             fxLayoutGap="1rem">
         <div [style.background]="transaction.categoryCode" class="transaction-colour--div"
              data-test-hook='transactionColour'></div>

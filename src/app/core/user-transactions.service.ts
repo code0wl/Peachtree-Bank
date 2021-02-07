@@ -40,7 +40,7 @@ export class UserTransactionsService {
    */
   addTransaction(transactionData: TransactionFormData): void {
     const request = this.formTransactionRequest(transactionData);
-    this.mockTransactions = [...this.mockTransactions, request];
+    this.mockTransactions = [request, ...this.mockTransactions];
     this.transactions$.next(this.mockTransactions);
   }
 

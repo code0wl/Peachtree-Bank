@@ -1,20 +1,21 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DashboardRoutingModule} from "./dashboard-routing.module";
-import {BbUIModule} from "../shared/bb-ui.module";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {DashboardRoutingModule} from './dashboard-routing.module';
+import {BbUIModule} from '../shared/bb-ui.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TransferFormComponent} from './transfer-form/transfer-form.component';
 import {TransactionsListComponent} from './transactions-list/transactions-list.component';
-import {DashboardComponent} from "./dashboard.component";
-import {FlexLayoutModule} from "@angular/flex-layout";
-import {MatIconModule} from "@angular/material/icon";
+import {DashboardComponent} from './dashboard.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatIconModule} from '@angular/material/icon';
 import {TransactionReviewComponent} from './transaction-review/transaction-review.component';
-import {MatDialogModule} from "@angular/material/dialog";
-import {MatButtonModule} from "@angular/material/button";
-import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {MatCardModule} from "@angular/material/card";
-import {MatInputModule} from "@angular/material/input";
-import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {SortByDatePipe} from '../shared/pipes/sort-by-date.pipe';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
     TransferFormComponent,
     TransactionsListComponent,
     TransactionReviewComponent,
+    SortByDatePipe,
     TransactionReviewComponent],
   imports: [
     CommonModule,
@@ -43,6 +45,7 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
     MatIconModule,
     MatCardModule,
     MatInputModule,
+    SortByDatePipe,
     MatAutocompleteModule
   ],
   entryComponents: [TransactionReviewComponent]
