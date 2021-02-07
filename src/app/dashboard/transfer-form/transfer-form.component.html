@@ -10,9 +10,18 @@
         <input formControlName="fromAccount" id="from-account" type="text">
       </div>
       <div fxLayout="column" fxLayoutGap="0.5rem">
-        <div fxFlex="100"><label for="to-account">To Account</label></div>
-        <input autocomplete="off" formControlName="toAccount" id="to-account" placeholder="type an account name"
-               type="text">
+        <div fxFlex="100"><label for="merchant-search">To Account</label></div>
+        <div class="auto-complete-input--wrapper" fxLayout="column">
+          <input (ngModelChange)="getFilteredMerchants($event)" autocomplete="off" formControlName="merchantSearch"
+                 id="merchant-search" placeholder="type an account name"
+                 type="text">
+          <div *ngIf="showMerchantOptions" class="auto-complete-input--options">
+            <mat-option (onSelectionChange)="setMerchant(merchant)" *ngFor="let merchant of filteredMerchants"
+                        [value]="merchant">
+              {{ merchant.name }}
+            </mat-option>
+          </div>
+        </div>
       </div>
       <div fxLayout="column" fxLayoutGap="0.5rem">
         <div fxFlex="100"><label for="amount">Amount</label></div>

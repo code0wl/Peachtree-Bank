@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TransactionData} from "../../shared/models/transaction-data.model";
+import {Merchant, TransactionData} from "../../shared/models/transaction-data.model";
 
 @Component({
   selector: 'app-transactions-list',
@@ -8,6 +8,7 @@ import {TransactionData} from "../../shared/models/transaction-data.model";
 })
 export class TransactionsListComponent implements OnInit {
   @Input() transactionsList: TransactionData[];
+  @Input() merchants: Merchant[];
 
   constructor() {
   }

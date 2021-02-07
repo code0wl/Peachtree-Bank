@@ -13,6 +13,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatCardModule} from "@angular/material/card";
+import {MatInputModule} from "@angular/material/input";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 
 @NgModule({
@@ -31,13 +33,17 @@ import {MatCardModule} from "@angular/material/card";
     MatButtonModule,
     MatIconModule,
     FlexLayoutModule,
+    MatInputModule,
+    MatAutocompleteModule,
     ReactiveFormsModule,
     FormsModule,
     MatCardModule
   ],
   exports: [
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule,
+    MatAutocompleteModule
   ],
   entryComponents: [TransactionReviewComponent]
 })

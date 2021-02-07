@@ -2,10 +2,14 @@ import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserAccount} from '../../shared/models/user-account.model';
 import {TransactionFormData} from "../../shared/models/transaction-form-data.model";
+import {Subject} from "rxjs";
+import {debounceTime, distinctUntilChanged} from "rxjs/operators";
+import {Merchant} from "../../shared/models/transaction-data.model";
 
 interface InputError {
   [key: string]: boolean;
 }
+
 
 @Component({
   selector: 'app-transfer-form',
@@ -14,10 +18,24 @@ interface InputError {
 })
 export class TransferFormComponent implements OnChanges {
   transferForm: FormGroup;
+  modelChanged: Subject<string> = new Subject<string>();
+  filteredMerchants: Merchant[] = [];
+  showMerchantOptions: boolean;
+  @Input() merchants: Merchant[];
   @Input() userAccount: UserAccount;
   @Output() performTransaction = new EventEmitter<TransactionFormData>();
 
   constructor(private fb: FormBuilder) {
+    this.showMerchantOptions = false;
+    this.modelChanged.pipe(
+      debounceTime(250),
+      distinctUntilChanged()
+    ).subscribe((searchString) => {
+      (searchString && this.transferForm.get('toAccount').value) ?
+        this.showMerchantOptions = false :
+        this.showMerchantOptions = true;
+      this.filteredMerchants = this.merchants.filter(v => v.name.toLowerCase().indexOf(searchString.toLowerCase()) > -1).slice(0, 10);
+    });
   }
 
   /**
@@ -32,9 +50,7 @@ export class TransferFormComponent implements OnChanges {
    * @param changes - the input properties changes
    */
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.userAccount && changes.userAccount.currentValue) {
-      this.initializeForm();
-    }
+    this.initializeForm();
   }
 
   /**
@@ -47,17 +63,12 @@ export class TransferFormComponent implements OnChanges {
   }
 
   /**
-   * @summary Initializes the form with fromAccount, toAccount and amount controls
+   * @summary Reads the name of the given merchant
+   * @param merchant - merchant object
+   * @returns the name of the merchant
    */
-  private initializeForm(): void {
-    this.transferForm = this.fb.group({
-      fromAccount: [{
-        value: this.fromAccountDisplayValue(),
-        disabled: true
-      }],
-      toAccount: [undefined, Validators.required],
-      amount: [undefined, [Validators.required, this.validateAmount()]]
-    });
+  getFilteredMerchants(searchText: string): void {
+    this.modelChanged.next(searchText);
   }
 
   /**
@@ -90,5 +101,25 @@ export class TransferFormComponent implements OnChanges {
     };
   }
 
+  setMerchant(merchant: Merchant): void {
+    this.showMerchantOptions = false;
+    this.transferForm.get('merchantSearch').setValue(merchant.name);
+    this.transferForm.get('toAccount').setValue(merchant);
+  }
+
+  /**
+   * @summary Initializes the form with fromAccount, toAccount and amount controls
+   */
+  private initializeForm(): void {
+    this.transferForm = this.fb.group({
+      fromAccount: [{
+        value: this.fromAccountDisplayValue(),
+        disabled: true
+      }],
+      merchantSearch: [undefined, Validators.required],
+      toAccount: [undefined, Validators.required],
+      amount: [undefined, [Validators.required, this.validateAmount()]]
+    });
+  }
 
 }
