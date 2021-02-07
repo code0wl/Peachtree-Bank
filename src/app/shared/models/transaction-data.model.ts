@@ -1,14 +1,12 @@
-import {UserAccount} from './user-account.model';
-
 export interface TransactionData {
-  categoryCode: UserAccount;
+  categoryCode: string;
   dates: ValueDate;
   transaction: Transaction;
   merchant: Merchant;
 }
 
 export interface ValueDate {
-  valueDate: number;
+  valueDate: number | string;
 }
 
 export interface Transaction {
@@ -23,6 +21,6 @@ export interface Merchant {
 }
 
 export interface AmountCurrency {
-  amount: number;
+  amount: string;
   currencyCode: string;
 }

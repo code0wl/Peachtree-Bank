@@ -17,12 +17,11 @@
       <div fxLayout="column" fxLayoutGap="0.5rem">
         <div fxFlex="100"><label for="amount">Amount</label></div>
         <div class="input-icon" fxFlex="100%" fxLayoutGap="0.5rem">
-          <input autocomplete="off" formControlName="amount" id="amount" min="0" placeholder="0.00"
-                 fxFlex="100%" type="number">
+          <input autocomplete="off" formControlName="amount" id="amount" min="0" placeholder="0.00" type="number">
           <i [innerHTML]="userAccount.currencyCode" fxLayoutAlign="center center"></i>
         </div>
       </div>
-      <div *ngIf="amount.errors && amount.errors.overdraft">Can not overdraft beyond 500</div>
+      <div *ngIf="amount.errors && amount.errors.overdraft">There is no enough balance</div>
     </form>
   </mat-card-content>
   <mat-card-actions>

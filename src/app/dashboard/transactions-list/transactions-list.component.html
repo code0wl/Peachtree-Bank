@@ -1,1 +1,25 @@
-<p>transactions-list works!</p>
+<mat-card class="transfer-form-card">
+  <mat-card-header class="transfer-form--header" fxLayoutAlign="start center">
+    <mat-icon mat-card-avatar>list</mat-icon>
+    <mat-card-title>Transactions <strong>List</strong></mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="transfer-form--content">
+    <div class="transactions-list" fxLayout="column" fxLayoutGap="1rem">
+      <app-transaction-item *ngFor="let transaction of transactionsList" fxLayout="row" fxLayoutAlign="start center"
+                            fxLayoutGap="1rem">
+        <div [style.background]="transaction.categoryCode" class="transaction-colour--div"
+             data-test-hook='transactionColour'></div>
+        <div class="transaction-date--div" data-test-hook='transactionDate'
+             fxFlex="10%">{{transaction.dates.valueDate | date: 'MMM. yy'}}</div>
+        <div class="transaction-merchant-name--div" data-test-hook='transactionMerchantName'
+             fxFlex>{{transaction.merchant.name}}</div>
+        <div class="transaction-type--div" data-test-hook='transactionType'
+             fxFlex>{{transaction.transaction.type}}</div>
+        <div class="transaction-amount--div" data-test-hook='transactionAmount'
+             fxFlex="10%">{{transaction.transaction.amountCurrency.amount}}</div>
+      </app-transaction-item>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+

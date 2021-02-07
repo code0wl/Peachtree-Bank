@@ -1,32 +1,24 @@
 <div fxLayout="row" fxLayoutAlign="space-between center" mat-dialog-title>
-  <span>Confirmation</span>
+  <span>Review Transfer</span>
   <button (click)="dismiss()" mat-icon-button>
-    <mat-icon></mat-icon>
+    <mat-icon>close</mat-icon>
   </button>
 </div>
 <mat-dialog-content>
-  <div>
-    <div>
-      <span>From</span>
-      <div>
-        <div>{{data.fromAccount.name}}</div>
-        <div>{{data.fromAccount.accountNumber}}</div>
-      </div>
+  <div fxLayout="column" fxLayoutGap="1rem">
+    <div><i>Are you ready to send out this transfer?</i></div>
+    <div fxLayout="column" fxLayoutGap="0.5rem">
+      <span><strong>It will be send to account:</strong></span>
+      <span>{{data.toAccount}}</span>
     </div>
-    <div>
-      <span>To</span>
-      <div>
-        <div>{{data.toAccount.name}}</div>
-        <div>{{data.toAccount.accountNumber}}</div>
-      </div>
-    </div>
-    <div class="row align-items-center justify-content-center pt-2 pb-2">
-      <span class="col-3 amount-title">Amount</span>
-      <span class="col-5 amount">{{data.fromAccount.currencyCode }} {{data.amount}}</span>
+    <div fxLayout="column" fxLayoutGap="0.5rem">
+      <span><strong>With an amount of:</strong></span>
+      <span [innerHTML]="data.fromAccount.currencyCode + ' ' +data.amount"></span>
     </div>
   </div>
 </mat-dialog-content>
 
-<mat-dialog-actions>
-  <button (click)="confirm()" mat-raised-button></button>
+<mat-dialog-actions class="dialog-actions" fxLayoutAlign="end center">
+  <button (click)="confirm()" mat-raised-button>Close</button>
+  <button (click)="confirm()" class="btn btn-primary" mat-raised-button>Send Transfer</button>
 </mat-dialog-actions>

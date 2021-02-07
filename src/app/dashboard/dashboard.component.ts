@@ -1,13 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {UserAccount} from '../shared/models/user-account.model';
-import {TransactionData} from "../shared/models/transaction-data.model";
+import {Merchant, TransactionData} from "../shared/models/transaction-data.model";
 import {UserTransactionsService} from "../core/user-transactions.service";
 import {UserProfileService} from "../core/user-profile.service";
 import {TransactionReviewComponent} from "./transaction-review/transaction-review.component";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {TransactionFromData} from "../shared/models/transaction-form-data.model";
+import {TransactionFormData} from "../shared/models/transaction-form-data.model";
+import {MerchantService} from "../core/merchant.service";
+
 
 @Component({
   selector: 'app-dashboard',
@@ -17,11 +19,13 @@ import {TransactionFromData} from "../shared/models/transaction-form-data.model"
 export class DashboardComponent implements OnInit {
   userTransactionsList$: Observable<TransactionData[]>;
   userAccountDetails$: Observable<UserAccount>;
+  merchants$: Observable<Merchant[]>;
 
   constructor(
     private readonly matDialog: MatDialog,
     private readonly matSnackBar: MatSnackBar,
     private transactionsService: UserTransactionsService,
+    private merchantsDataService: MerchantService,
     private userDataService: UserProfileService,
   ) {
   }
@@ -29,6 +33,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.userAccountDetails$ = this.userDataService.getUserAccountDetails();
     this.userTransactionsList$ = this.transactionsService.getUserTransactionDetails();
+    this.merchants$ = this.merchantsDataService.getMerchants();
   }
 
   /**
@@ -37,7 +42,7 @@ export class DashboardComponent implements OnInit {
    *          from user account
    * @param data - transaction data object which holds from account, to account and amount details
    */
-  reviewTransaction(data: TransactionFromData): void {
+  reviewTransaction(data: TransactionFormData): void {
     let dialogRef: MatDialogRef<TransactionReviewComponent>;
     dialogRef = this.matDialog.open(TransactionReviewComponent, {
       width: '40rem',

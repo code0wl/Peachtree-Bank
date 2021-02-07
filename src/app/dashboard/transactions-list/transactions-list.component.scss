@@ -1,0 +1,70 @@
+@import '../../../../src/app/shared/styles/main';
+
+.transfer-form-card {
+  width: 700px;
+  height: 70vh;
+  padding: 0;
+  border-radius: 8px;
+
+  ::ng-deep {
+    .mat-card-header .mat-card-title, .mat-card-actions {
+      margin: 0;
+    }
+
+    .mat-card-actions {
+      padding: 0;
+    }
+  }
+
+
+  .transfer-form--header {
+    background: $primary-blue;
+    padding: 1rem;
+    color: white;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .transfer-form--content {
+    background: white;
+    padding: 1rem 1rem 0;
+    margin: 0;
+    height: calc(100% - 3rem);
+
+    .input-icon {
+      position: relative;
+
+      & > i {
+        position: absolute;
+        display: block;
+        transform: translate(0, -50%);
+        top: 50%;
+        pointer-events: none;
+        width: 32px;
+        text-align: center;
+        font-style: normal;
+        background: #dadada;
+        height: 100%;
+        border-radius: 4px;
+      }
+
+      & > input {
+        padding-left: 36px;
+        padding-right: 0;
+        margin: 0;
+      }
+    }
+
+    .transactions-list {
+      height: 100%;
+      overflow: auto;
+    }
+  }
+
+  .transaction-colour--div {
+    width: 8px;
+    height: 64px;
+    display: block;
+  }
+
+
+}

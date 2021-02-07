@@ -13,6 +13,7 @@ export class TransactionsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.transactionsList);
   }
 
 }

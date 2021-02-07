@@ -1,6 +1,6 @@
 import {UserAccount} from './user-account.model';
 
-export interface TransactionFromData {
+export interface TransactionFormData {
   fromAccount: UserAccount;
   toAccount: UserAccount;
   amount: number;

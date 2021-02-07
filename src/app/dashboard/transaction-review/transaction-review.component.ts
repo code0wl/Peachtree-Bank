@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {TransactionFromData} from "../../shared/models/transaction-form-data.model";
+import {TransactionFormData} from "../../shared/models/transaction-form-data.model";
 
 @Component({
   selector: 'app-transaction-review',
@@ -10,7 +10,7 @@ import {TransactionFromData} from "../../shared/models/transaction-form-data.mod
 export class TransactionReviewComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<TransactionReviewComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: TransactionFromData) {
+              @Inject(MAT_DIALOG_DATA) public data: TransactionFormData) {
   }
 
   ngOnInit(): void {

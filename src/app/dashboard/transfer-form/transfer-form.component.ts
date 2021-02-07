@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserAccount} from '../../shared/models/user-account.model';
-import {TransactionFromData} from "../../shared/models/transaction-form-data.model";
+import {TransactionFormData} from "../../shared/models/transaction-form-data.model";
 
 interface InputError {
   [key: string]: boolean;
@@ -15,7 +15,7 @@ interface InputError {
 export class TransferFormComponent implements OnChanges {
   transferForm: FormGroup;
   @Input() userAccount: UserAccount;
-  @Output() performTransaction = new EventEmitter<TransactionFromData>();
+  @Output() performTransaction = new EventEmitter<TransactionFormData>();
 
   constructor(private fb: FormBuilder) {
   }

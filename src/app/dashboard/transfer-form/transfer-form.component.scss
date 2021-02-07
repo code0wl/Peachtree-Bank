@@ -1,11 +1,10 @@
 @import '../../../../src/app/shared/styles/main';
 
 .transfer-form-card {
-  width: 400px;
+  width: 350px;
   height: auto;
   padding: 0;
   border-radius: 8px;
-  margin-top: 3rem;
 
   ::ng-deep {
     .mat-card-header .mat-card-title, .mat-card-actions {
@@ -20,7 +19,7 @@
 
   .transfer-form--header {
     background: $primary-blue;
-    padding: 0.5rem;
+    padding: 1rem;
     color: white;
     border-radius: 8px 8px 0 0;
   }
