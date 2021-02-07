@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
 import {UserAccount} from '../shared/models/user-account.model';
-import {Merchant, TransactionData} from "../shared/models/transaction-data.model";
-import {UserTransactionsService} from "../core/user-transactions.service";
-import {UserProfileService} from "../core/user-profile.service";
-import {TransactionReviewComponent} from "./transaction-review/transaction-review.component";
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {TransactionFormData} from "../shared/models/transaction-form-data.model";
-import {MerchantService} from "../core/merchant.service";
+import {Merchant, TransactionData} from '../shared/models/transaction-data.model';
+import {UserTransactionsService} from '../core/user-transactions.service';
+import {UserProfileService} from '../core/user-profile.service';
+import {TransactionReviewComponent} from './transaction-review/transaction-review.component';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {TransactionFormData} from '../shared/models/transaction-form-data.model';
+import {MerchantService} from '../core/merchant.service';
 
 
 @Component({
@@ -52,6 +52,7 @@ export class DashboardComponent implements OnInit {
       if (confirm) {
         this.transactionsService.addTransaction(data);
         this.userDataService.deductBalance(data.amount);
+        this.matSnackBar.open('Transaction Successful', '', {duration: 3000});
       } else {
         this.matSnackBar.open('Transfer Cancelled, Please resubmit to transfer', '', {duration: 3000});
       }

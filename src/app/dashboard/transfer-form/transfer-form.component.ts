@@ -5,6 +5,7 @@ import {TransactionFormData} from "../../shared/models/transaction-form-data.mod
 import {Subject} from "rxjs";
 import {debounceTime, distinctUntilChanged} from "rxjs/operators";
 import {Merchant} from "../../shared/models/transaction-data.model";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 interface InputError {
   [key: string]: boolean;
@@ -25,7 +26,8 @@ export class TransferFormComponent implements OnChanges {
   @Input() userAccount: UserAccount;
   @Output() performTransaction = new EventEmitter<TransactionFormData>();
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private readonly matSnackBar: MatSnackBar) {
     this.showMerchantOptions = false;
     this.modelChanged.pipe(
       debounceTime(250),
@@ -58,8 +60,13 @@ export class TransferFormComponent implements OnChanges {
    *          details and emits an event to it's parent component with transactionData
    */
   onSubmit(): void {
-    const transactionData = {...this.transferForm.value, ...{fromAccount: this.userAccount}};
-    this.performTransaction.emit(transactionData);
+    if (this.transferForm.valid) {
+      const transactionData = {...this.transferForm.value, ...{fromAccount: this.userAccount}};
+      this.performTransaction.emit(transactionData);
+    } else {
+      this.matSnackBar.open('Please enter proper data to submit form', '', {duration: 3000});
+      this.transferForm.markAllAsTouched();
+    }
   }
 
   /**
@@ -120,6 +127,24 @@ export class TransferFormComponent implements OnChanges {
       toAccount: [undefined, Validators.required],
       amount: [undefined, [Validators.required, this.validateAmount()]]
     });
+  }
+
+  isInValidField(controlName): boolean {
+    return (this.transferForm.get(controlName).touched) && this.transferForm.get(controlName).invalid;
+  }
+
+  getErrorMessage(controlName): string {
+    if (this.transferForm.get(controlName).errors) {
+      switch (Object.keys(this.transferForm.get(controlName).errors)[0]) {
+        case 'required':
+          return 'This field is required';
+        case 'overdraft':
+          return 'There is no enough balance';
+        case 'invalidAmount':
+          return 'Please enter valid amount';
+      }
+    }
+    return '';
   }
 
 }
