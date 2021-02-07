@@ -16,6 +16,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {SortByDatePipe} from '../shared/pipes/sort-by-date.pipe';
+import {FilterListPipe} from "../shared/pipes/filter-list.pipe";
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {SortByDatePipe} from '../shared/pipes/sort-by-date.pipe';
     TransactionsListComponent,
     TransactionReviewComponent,
     SortByDatePipe,
+    FilterListPipe,
     TransactionReviewComponent],
   imports: [
     CommonModule,
@@ -46,6 +48,7 @@ import {SortByDatePipe} from '../shared/pipes/sort-by-date.pipe';
     MatCardModule,
     MatInputModule,
     SortByDatePipe,
+    FilterListPipe,
     MatAutocompleteModule
   ],
   entryComponents: [TransactionReviewComponent]

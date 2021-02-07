@@ -4,10 +4,19 @@
     <mat-card-title>Transactions <strong>List</strong></mat-card-title>
   </mat-card-header>
   <mat-card-content class="transfer-form--content">
+    <div>
+      <form #filterForm>
+        <input [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" autocomplete="off"
+               placeholder="Search by typing..." type="text">
+        <span (click)="filterForm.reset();searchText=''" *ngIf="searchText" class="clear-filter">&#10005;</span>
+      </form>
+    </div>
     <div class="transactions-list" fxLayout="column" fxLayoutGap="1rem">
-      <app-transaction-item *ngFor="let transaction of transactionsList | sortByDate : 'desc'" fxLayout="row"
-                            fxLayoutAlign="start center"
-                            fxLayoutGap="1rem">
+      <app-transaction-item
+        *ngFor="let transaction of transactionsList | filterList:searchText:filterCategory | sortByDate : 'desc'"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxLayoutGap="1rem">
         <div [style.background]="transaction.categoryCode" class="transaction-colour--div"
              data-test-hook='transactionColour'></div>
         <div class="transaction-date--div" data-test-hook='transactionDate'

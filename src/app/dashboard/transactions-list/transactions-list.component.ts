@@ -9,6 +9,8 @@ import {Merchant, TransactionData} from "../../shared/models/transaction-data.mo
 export class TransactionsListComponent implements OnInit {
   @Input() transactionsList: TransactionData[];
   @Input() merchants: Merchant[];
+  searchText: string;
+  filterCategory: string[] = ['merchant'];
 
   constructor() {
   }
