@@ -4,7 +4,7 @@
   width: 700px;
   height: 70vh;
   padding: 0;
-  border-radius: 8px;
+  border-radius: 20px;
 
   ::ng-deep {
     .mat-card-header .mat-card-title, .mat-card-actions {
@@ -21,7 +21,7 @@
     background: $primary-blue;
     padding: 1rem;
     color: white;
-    border-radius: 8px 8px 0 0;
+    border-radius: 20px 20px 0 0;
   }
 
   .transfer-form--content {
@@ -29,6 +29,7 @@
     padding: 1rem 1rem 0;
     margin: 0;
     height: calc(100% - 3rem);
+    border-radius: 0 0 20px 20px;
 
     .input-icon {
       position: relative;
@@ -39,24 +40,24 @@
         transform: translate(0, -50%);
         top: 50%;
         pointer-events: none;
-        width: 32px;
+        width: 3rem;
         text-align: center;
         font-style: normal;
         background: #dadada;
         height: 100%;
-        border-radius: 4px;
+        border-radius: 4px 0 0 4px;
       }
 
       & > input {
-        padding-left: 36px;
-        padding-right: 0;
-        margin: 0;
+        border-radius: 0 4px 4px 0;
+        margin-left: 3rem;
       }
     }
 
     .transactions-list {
       height: inherit;
       overflow: auto;
+      padding-bottom: 0.5rem;
     }
   }
 
@@ -66,5 +67,8 @@
     display: block;
   }
 
+  .transaction-amount {
+    color: green;
+  }
 
 }

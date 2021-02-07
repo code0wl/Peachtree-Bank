@@ -29,16 +29,16 @@
         <div fxFlex="100"><label for="amount">Amount</label></div>
         <div fxLayout="column">
           <div class="input-icon" fxFlex="100%" fxLayoutGap="0.5rem">
-            <i [innerHTML]="userAccount.currencyCode" fxLayoutAlign="center center"></i>
-            <input [ngClass]="isInValidField('merchantSearch') ? 'error' : ''" autocomplete="off"
-                   formControlName="amount" fxFlex="100%" id="amount" min="0" placeholder="0.00"
+            <i [innerHTML]="userAccount?.currencyCode" fxLayoutAlign="center center"></i>
+            <input [ngClass]="isInValidField('amount') ? 'error' : ''" autocomplete="off"
+                   formControlName="amount" fxFlex="100%" id="amount" min="0" placeholder="specify the amount"
                    type="number">
           </div>
           <small *ngIf="isInValidField('amount')" class="error-text">{{getErrorMessage('amount')}}</small>
         </div>
 
       </div>
-      <div *ngIf="amount.errors && amount.errors.overdraft">There is no enough balance</div>
+      <div *ngIf="amount?.errors && amount?.errors?.overdraft">There is no enough balance</div>
     </form>
   </mat-card-content>
   <mat-card-actions>

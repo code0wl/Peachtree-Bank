@@ -89,7 +89,7 @@ export class TransferFormComponent implements OnChanges {
     const balance = userAccount.balance;
     const currencyCode = '$';
     const accountNumber = userAccount.accountNumber.slice(-4);
-    return `${name}(${accountNumber}) - ${currencyCode}${balance}`;
+    return `${name}: ${currencyCode}${balance}`;
   }
 
   /**

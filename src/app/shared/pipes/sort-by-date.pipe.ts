@@ -6,7 +6,7 @@ import {TransactionData} from '../models/transaction-data.model';
 })
 export class SortByDatePipe implements PipeTransform {
 
-  transform(transactionsList: TransactionData[], ...args: string[]): unknown {
+  transform(transactionsList: TransactionData[], ...args: string[]): TransactionData[] {
     switch (args[0]) {
       case 'asc':
         return transactionsList.sort((a, b) => new Date(a.dates.valueDate).getTime() - new Date(b.dates.valueDate).getTime());
