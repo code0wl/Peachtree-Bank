@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {TransactionData} from '../shared/models/transaction-data.model';
-import {HttpClient} from '@angular/common/http';
 import {TransactionFormData} from '../shared/models/transaction-form-data.model';
 import mockTransactionsData from '../core/mock-data/mock-transaction-data';
 
@@ -14,9 +13,6 @@ export class UserTransactionsService {
 
   private mockTransactions: TransactionData[] = [...mockTransactionsData];
   private transactions$: BehaviorSubject<TransactionData[]> = new BehaviorSubject(this.mockTransactions);
-
-  constructor(private readonly http: HttpClient) {
-  }
 
   /**
    * @summary Fetches transactions from API

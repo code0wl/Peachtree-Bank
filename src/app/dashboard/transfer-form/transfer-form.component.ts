@@ -18,7 +18,7 @@ interface InputError {
   styleUrls: ['./transfer-form.component.scss']
 })
 export class TransferFormComponent implements OnChanges {
-  transferForm: FormGroup;
+  transferForm: FormGroup = new FormGroup({});
   modelChanged: Subject<string> = new Subject<string>();
   filteredMerchants: Merchant[] = [];
   showMerchantOptions: boolean;
@@ -52,7 +52,9 @@ export class TransferFormComponent implements OnChanges {
    * @param changes - the input properties changes
    */
   ngOnChanges(changes: SimpleChanges): void {
-    this.initializeForm();
+    if (changes.userAccount && changes.userAccount.currentValue) {
+      this.initializeForm();
+    }
   }
 
   /**

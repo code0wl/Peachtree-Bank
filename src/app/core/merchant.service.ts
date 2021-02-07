@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Observable} from "rxjs";
-import {UserTransactionsService} from "./user-transactions.service";
-import {Merchant} from "../shared/models/transaction-data.model";
-import {map} from "rxjs/operators";
+import {Observable} from 'rxjs';
+import {UserTransactionsService} from './user-transactions.service';
+import {Merchant} from '../shared/models/transaction-data.model';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
