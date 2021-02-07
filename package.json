@@ -5,9 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "test": "karma start ./config/karma.conf.js",
+    "test:headless": "karma start ./config/karma.conf.js --browsers PhantomJS",
+    "test:chrome": "karma start ./config/karma.conf.js --browsers Chrome"
   },
   "private": true,
   "dependencies": {
@@ -39,6 +41,7 @@
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
+    "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine-html-reporter": "^1.5.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",

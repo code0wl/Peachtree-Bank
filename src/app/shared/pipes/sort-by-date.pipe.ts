@@ -11,8 +11,9 @@ export class SortByDatePipe implements PipeTransform {
       case 'asc':
         return transactionsList.sort((a, b) => new Date(a.dates.valueDate).getTime() - new Date(b.dates.valueDate).getTime());
       case 'desc':
-      default:
         return transactionsList.sort((a, b) => new Date(b.dates.valueDate).getTime() - new Date(a.dates.valueDate).getTime());
+      default:
+        return transactionsList;
     }
   }
 
