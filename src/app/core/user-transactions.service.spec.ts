@@ -4,9 +4,33 @@ import {UserTransactionsService} from './user-transactions.service';
 import {TransactionData} from '../shared/models/transaction-data.model';
 import {take} from 'rxjs/operators';
 import {TransactionFormData} from '../shared/models/transaction-form-data.model';
+import {Observable, of} from "rxjs";
 
 describe('UserTransactionsService', () => {
   let transactionsService: UserTransactionsService;
+
+  const transactionsServiceMock = {
+    getUserTransactionDetails(): Observable<TransactionData[]> {
+      return of([{
+        categoryCode: '#12a580',
+        dates: {
+          valueDate: 1600493600000
+        },
+        transaction: {
+          amountCurrency: {
+            amount: '5000',
+            currencyCode: 'EUR'
+          },
+          type: 'Salaries',
+          creditDebitIndicator: 'CRDT'
+        },
+        merchant: {
+          name: 'Backbase',
+          accountNumber: 'SI64397745065188826'
+        }
+      }]);
+    }
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
@@ -25,7 +49,7 @@ describe('UserTransactionsService', () => {
   });
 
   it('#getTransactions should fetch transactions from API and maps to TransformedTransaction', (done: DoneFn) => {
-    transactionsService.getUserTransactionDetails().subscribe((transactions: TransactionData[]) => {
+    transactionsServiceMock.getUserTransactionDetails().subscribe((transactions: TransactionData[]) => {
       expect(transactions[0]).toEqual({
         categoryCode: '#12a580',
         dates: {
@@ -78,3 +102,4 @@ describe('UserTransactionsService', () => {
     });
   });
 });
+

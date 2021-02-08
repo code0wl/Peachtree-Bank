@@ -39,7 +39,7 @@ describe('MerchantService', () => {
       .subscribe(merchants => {
         expect(merchants.length).toBe(11);
         expect(merchants[0]).toEqual({
-          name: 'Backbase',
+          name: 'H&M Online Store',
           accountNumber: 'SI64397745065188826'
         });
       });

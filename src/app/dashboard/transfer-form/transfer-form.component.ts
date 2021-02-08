@@ -11,7 +11,6 @@ interface InputError {
   [key: string]: boolean;
 }
 
-
 @Component({
   selector: 'app-transfer-form',
   templateUrl: './transfer-form.component.html',

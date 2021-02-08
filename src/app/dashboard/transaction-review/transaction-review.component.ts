@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {TransactionFormData} from "../../shared/models/transaction-form-data.model";
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {TransactionFormData} from '../../shared/models/transaction-form-data.model';
 
 @Component({
   selector: 'app-transaction-review',
