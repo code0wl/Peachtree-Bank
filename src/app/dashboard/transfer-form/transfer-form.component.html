@@ -12,9 +12,10 @@
       <div fxLayout="column" fxLayoutGap="0.5rem">
         <div fxFlex="100"><label for="merchant-search">To Account</label></div>
         <div class="auto-complete-input--wrapper" fxLayout="column">
-          <input (ngModelChange)="getFilteredMerchants($event)" autocomplete="off" formControlName="merchantSearch"
-                 id="merchant-search" placeholder="type an account name"
-                 [ngClass]="isInValidField('merchantSearch') ? 'error' : ''" type="text">
+          <input (ngModelChange)="getFilteredMerchants($event)"
+                 [ngClass]="isInValidField('merchantSearch') ? 'error' : ''" autocomplete="off"
+                 formControlName="merchantSearch" id="merchant-search"
+                 placeholder="type an account name" type="text">
           <small *ngIf="isInValidField('merchantSearch')"
                  class="error-text">{{getErrorMessage('merchantSearch')}}</small>
           <div *ngIf="showMerchantOptions" class="auto-complete-input--options">

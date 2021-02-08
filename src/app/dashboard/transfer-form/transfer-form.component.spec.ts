@@ -2,11 +2,11 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {TransferFormComponent} from './transfer-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {BbUIModule} from "../../shared/bb-ui.module";
-import {DebugElement, SimpleChange} from "@angular/core";
-import {By} from "@angular/platform-browser";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {TransactionFormData} from "../../shared/models/transaction-form-data.model";
+import {BbUIModule} from '../../shared/bb-ui.module';
+import {DebugElement, SimpleChange} from '@angular/core';
+import {By} from '@angular/platform-browser';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {TransactionFormData} from '../../shared/models/transaction-form-data.model';
 
 describe('TransferFormComponent', () => {
   let component: TransferFormComponent;

@@ -2,7 +2,7 @@ import {TestBed} from '@angular/core/testing';
 import userAccountDetails from '../core/mock-data/mock-user-data';
 import {UserProfileService} from './user-profile.service';
 import {UserAccount} from '../shared/models/user-account.model';
-import {take} from "rxjs/operators";
+import {take} from 'rxjs/operators';
 
 describe('UserProfileService', () => {
   let userDataService: UserProfileService;

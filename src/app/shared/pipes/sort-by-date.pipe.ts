@@ -6,6 +6,12 @@ import {TransactionData} from '../models/transaction-data.model';
 })
 export class SortByDatePipe implements PipeTransform {
 
+  /**
+   * @summary Sorts the array of TransactionData
+   * @param transactionsList - an array of TransactionData that being filtered
+   * @param args - a string defined direction criteria
+   * @returns an array of TransactionData
+   */
   transform(transactionsList: TransactionData[], ...args: string[]): TransactionData[] {
     switch (args[0]) {
       case 'asc':

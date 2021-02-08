@@ -1,11 +1,11 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserAccount} from '../../shared/models/user-account.model';
-import {TransactionFormData} from "../../shared/models/transaction-form-data.model";
-import {Subject} from "rxjs";
-import {debounceTime, distinctUntilChanged} from "rxjs/operators";
-import {Merchant} from "../../shared/models/transaction-data.model";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {TransactionFormData} from '../../shared/models/transaction-form-data.model';
+import {Subject} from 'rxjs';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {Merchant} from '../../shared/models/transaction-data.model';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 interface InputError {
   [key: string]: boolean;
@@ -80,17 +80,12 @@ export class TransferFormComponent implements OnChanges {
   }
 
   /**
-   * @summary Creates a string from the user account details in a format
-   *          {name}{(accountNumber)} - {currencyCode}{balance}
-   * @returns user account details as a string
+   * @summary sets the merchant value after selection
    */
-  private fromAccountDisplayValue(): string {
-    const userAccount = this.userAccount;
-    const name = userAccount.name;
-    const balance = userAccount.balance;
-    const currencyCode = '$';
-    const accountNumber = userAccount.accountNumber.slice(-4);
-    return `${name}: ${currencyCode}${balance}`;
+  setMerchant(merchant: Merchant): void {
+    this.showMerchantOptions = false;
+    this.transferForm.get('merchantSearch').setValue(merchant.name);
+    this.transferForm.get('toAccount').setValue(merchant);
   }
 
   /**
@@ -109,10 +104,12 @@ export class TransferFormComponent implements OnChanges {
     };
   }
 
-  setMerchant(merchant: Merchant): void {
-    this.showMerchantOptions = false;
-    this.transferForm.get('merchantSearch').setValue(merchant.name);
-    this.transferForm.get('toAccount').setValue(merchant);
+  /**
+   * @summary checks the validity of the field
+   * @returns a boolean if field is valid or not
+   */
+  isInValidField(controlName): boolean {
+    return (this.transferForm.get(controlName).touched) && this.transferForm.get(controlName).invalid;
   }
 
   /**
@@ -130,10 +127,9 @@ export class TransferFormComponent implements OnChanges {
     });
   }
 
-  isInValidField(controlName): boolean {
-    return (this.transferForm.get(controlName).touched) && this.transferForm.get(controlName).invalid;
-  }
-
+  /**
+   * @summary returns the error message based on the error code
+   */
   getErrorMessage(controlName): string {
     if (this.transferForm.get(controlName).errors) {
       switch (Object.keys(this.transferForm.get(controlName).errors)[0]) {
@@ -146,6 +142,19 @@ export class TransferFormComponent implements OnChanges {
       }
     }
     return '';
+  }
+
+  /**
+   * @summary Creates a string from the user account details in a format
+   *          {name}: {currencyCode}{balance}
+   * @returns user account details as a string
+   */
+  private fromAccountDisplayValue(): string {
+    const userAccount = this.userAccount;
+    const name = userAccount.name;
+    const balance = userAccount.balance;
+    const currencyCode = '$';
+    return `${name}: ${currencyCode}${balance}`;
   }
 
 }

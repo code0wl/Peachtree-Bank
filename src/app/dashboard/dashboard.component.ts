@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
   }
 
   /**
-   * @summary Opens a modal to display transaction details such as from account, to account and amount
+   * @summary Opens a dialog to display transaction details such as from account, to account and amount
    *          on confirm - invokes add transaction to the existing transactions and deduct balance
    *          from user account
    * @param data - transaction data object which holds from account, to account and amount details
