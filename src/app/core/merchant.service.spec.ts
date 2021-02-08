@@ -3,7 +3,7 @@ import {TestBed} from '@angular/core/testing';
 import {MerchantService} from './merchant.service';
 import {UserTransactionsService} from './user-transactions.service';
 import {cold, getTestScheduler} from 'jasmine-marbles';
-import transactionsData from './mock-data/mock-transaction-data';
+import transactionsData from './mock-data/mock-test-data';
 
 describe('MerchantService', () => {
   let merchantsDataService: MerchantService;
@@ -37,11 +37,7 @@ describe('MerchantService', () => {
 
     merchantsDataService.getMerchants()
       .subscribe(merchants => {
-        expect(merchants.length).toBe(11);
-        expect(merchants[0]).toEqual({
-          name: 'H&M Online Store',
-          accountNumber: 'SI64397745065188826'
-        });
+        expect(merchants.length).toBe(3);
       });
   });
 });
