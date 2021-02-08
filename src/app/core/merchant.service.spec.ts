@@ -1,11 +1,11 @@
 import {TestBed} from '@angular/core/testing';
 
 import {MerchantService} from './merchant.service';
-import {UserTransactionsService} from "./user-transactions.service";
+import {UserTransactionsService} from './user-transactions.service';
 import {cold, getTestScheduler} from 'jasmine-marbles';
 import transactionsData from './mock-data/mock-transaction-data';
 
-fdescribe('MerchantService', () => {
+describe('MerchantService', () => {
   let merchantsDataService: MerchantService;
   let transactionsService: UserTransactionsService;
 
